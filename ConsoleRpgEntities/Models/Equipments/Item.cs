@@ -11,9 +11,6 @@ public class Item
     public string Type { get; set; }
     public int Attack { get; set; }
     public int Defense { get; set; }
-
-    [Column(TypeName = "decimal(3, 2)")]
     public decimal Weight { get; set; }
-
     public int Value { get; set; }
 }

@@ -42,4 +42,46 @@ public class MenuManager
             }
         }
     }
+
+    public int ShowInventoryMenu()
+    {
+        _outputManager.WriteLine("\nInventory Management:", ConsoleColor.Yellow);
+        _outputManager.WriteLine("1. Search for item by name", ConsoleColor.Cyan);
+        _outputManager.WriteLine("2. List items by type", ConsoleColor.Cyan);
+        _outputManager.WriteLine("3. Sort items", ConsoleColor.Cyan);
+        _outputManager.WriteLine("0. Back", ConsoleColor.Cyan);
+        _outputManager.Display();
+
+        while (true)
+        {
+            _outputManager.Write("Select an option: ", ConsoleColor.White);
+            _outputManager.Display();
+            var input = Console.ReadLine();
+            if (int.TryParse(input, out var choice) && choice is >= 0 and <= 3)
+                return choice;
+
+            _outputManager.WriteLine("Invalid selection. Try again.", ConsoleColor.Red);
+            _outputManager.Display();
+        }
+    }
+
+    public int ShowSortSubmenu()
+    {
+        _outputManager.WriteLine("\nSort Options:", ConsoleColor.Yellow);
+        _outputManager.WriteLine("1. Sort by Name", ConsoleColor.Cyan);
+        _outputManager.WriteLine("2. Sort by Attack Value", ConsoleColor.Cyan);
+        _outputManager.WriteLine("3. Sort by Defense Value", ConsoleColor.Cyan);
+        _outputManager.Display();
+
+        while (true)
+        {
+            _outputManager.Write("Choose 1-3: ", ConsoleColor.White);
+            var input = Console.ReadLine();
+            if (int.TryParse(input, out var choice) && choice is >= 1 and <= 3)
+                return choice;
+
+            _outputManager.WriteLine("Invalid selection. Try again.", ConsoleColor.Red);
+            _outputManager.Display();
+        }
+    }
 }
